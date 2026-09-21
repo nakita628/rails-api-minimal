@@ -1,0 +1,31 @@
+---
+openapi: 3.0.1
+info:
+  title: rails-api-minimal API
+  version: v1
+servers:
+- url: http://localhost:3000
+paths:
+  "/hello":
+    get:
+      summary: Say hello
+      tags:
+      - Hello
+      operationId: getHello
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Hello"
+components:
+  schemas:
+    Hello:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Hello, World!
+      required:
+      - message

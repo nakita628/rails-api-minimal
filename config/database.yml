@@ -1,0 +1,6 @@
+# This app has no Active Record, so there is nothing to configure here.
+#
+# The file exists only because dockerfile-rails 1.7.10 reads it unconditionally
+# in fix_database_config and crashes with Errno::ENOENT when it is missing:
+#   bin/rails generate dockerfile
+# A comment-only file parses to nil, so the generator skips the database section.
