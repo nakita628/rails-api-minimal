@@ -30,6 +30,9 @@ curl http://localhost:3000/hello
 
 ## テスト
 
+RSpec の雛形（`.rspec` / `spec/spec_helper.rb` / `spec/rails_helper.rb`）は
+`bin/rails generate rspec:install` の出力をそのまま使っています。
+
 ```bash
 bundle exec rspec
 ```
@@ -88,8 +91,11 @@ config/
   routes.rb
   dockerfile.yml                     # ジェネレータのオプション
   database.yml                       # 中身は無し。理由はファイル内のコメント参照
+.rspec                               # --require spec_helper（rspec:install の生成物）
 spec/
-  swagger_helper.rb                  # OpenAPI のメタ情報・components.schemas
+  spec_helper.rb                     # 生成物 (rspec:install)
+  rails_helper.rb                    # 生成物 (rspec:install)。Rails を test 環境で読み込む
+  swagger_helper.rb                  # rails_helper を require し、OpenAPI のメタ情報・components.schemas を定義
   requests/hello_spec.rb             # テスト兼 OpenAPI の定義元
 swagger/v1/swagger.yaml              # 生成される OpenAPI ドキュメント
 ```

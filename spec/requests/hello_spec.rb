@@ -7,11 +7,11 @@ RSpec.describe "hello", type: :request do
       operationId "getHello"
       produces "application/json"
 
-      response 200, "ok" do
+      response "200", "ok" do
         schema "$ref" => "#/components/schemas/Hello"
 
         run_test! do |response|
-          expect(JSON.parse(response.body)).to eq("message" => "Hello, World!")
+          expect(response.parsed_body).to eq("message" => "Hello, World!")
         end
       end
     end

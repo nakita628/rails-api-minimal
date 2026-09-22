@@ -1,7 +1,4 @@
-ENV["RAILS_ENV"] ||= "test"
-
-require_relative "../config/environment"
-require "rspec/rails"
+require "rails_helper"
 
 RSpec.configure do |config|
   config.openapi_root = Rails.root.join("swagger").to_s
